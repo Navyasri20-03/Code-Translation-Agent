@@ -156,7 +156,7 @@ System.out.println("Hello");
 
 ## 👩‍💻 Author
 
-**Your Name**
+**Munagala Navyasri, A.Sridevi**
 
 ---
 
