@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Code Translator</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Code Translator</h1>
+
+        <div class="main-content">
+            <div class="box">
+                <div class="box-header">
+                    <label for="source_code">Source Code</label>
+                    <label for="file_upload" class="upload-btn">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Upload
+                    </label>
+                    <input type="file" id="file_upload" accept=".txt,.py,.js,.java,.cpp,.c,.cs,.go,.rs,.rb,.html,.css"
+                        onchange="handleFileUpload(event)">
+                </div>
+                <textarea id="source_code" placeholder="Enter your code here..."></textarea>
+            </div>
+
+            <div class="controls">
+                <label for="language">Target Language</label>
+                <select id="language">
+                    <option value="Python">Python</option>
+                    <option value="JavaScript">JavaScript</option>
+                    <option value="Java">Java</option>
+                    <option value="C++">C++</option>
+                    <option value="Ruby">Ruby</option>
+                    <option value="C#">C#</option>
+                    <option value="Go">Go</option>
+                    <option value="Rust">Rust</option>
+                </select>
+                <button onclick="translateCode()">
+                    <span> Translate</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <button onclick="explainCode()" class="secondary-btn">
+                    <span>Explain</span>
+                </button>
+                <button onclick="debugCode()" class="secondary-btn">
+                    <span>Debug</span>
+                </button>
+                <p id="status_msg"></p>
+            </div>
+
+            <div class="box">
+                <div class="box-header">
+                    <label for="target_code">Translated Code</label>
+                    <button class="copy-btn" onclick="copyToClipboard('target_code')" title="Copy to clipboard">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy
+                    </button>
+                </div>
+                <textarea id="target_code" placeholder="Translation will appear here..." readonly></textarea>
+            </div>
+        </div>
+
+        <div class="explanation-content" style="margin-top: 2rem;">
+            <div class="box">
+                <div class="box-header">
+                    <label for="explanation_output">Explanation & Debug info</label>
+                    <button class="copy-btn" onclick="copyToClipboard('explanation_output')" title="Copy to clipboard">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                        </svg>
+                        Copy
+                    </button>
+                </div>
+                <textarea id="explanation_output" placeholder="Results for Explain / Debug will appear here..."
+                    readonly></textarea>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
